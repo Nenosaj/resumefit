@@ -6,7 +6,7 @@ This document tracks the core technologies used in ResumeFit and the reasons the
 
 - **Frontend**: Nuxt + Vue + TypeScript + Tailwind CSS
 - **Backend API**: Laravel
-- **AI/Data Service**: Python + FastAPI
+- **AI/Data Service**: Python + FastAPI (with Pydantic for validation, python-dotenv for config, and Uvicorn)
 - **LLM Provider**: Gemini API
 - **Database**: PostgreSQL
 - **Queue/Cache**: Redis

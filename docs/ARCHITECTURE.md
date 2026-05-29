@@ -23,6 +23,6 @@ The backend services (Laravel API, PostgreSQL, FastAPI AI Service, Redis) are or
 ## Service Responsibilities
 
 - **Laravel API**: Acts as the core backend orchestrator. It manages the PostgreSQL database via Eloquent, handles API requests from the Nuxt frontend, persists data, queues jobs via Redis, and acts as the client communicating with the FastAPI AI Service for LLM operations.
-- **FastAPI AI Service**: An isolated microservice handling AI parsing, data extraction, and communication with the Gemini API.
+- **FastAPI AI Service**: An isolated Python microservice built with FastAPI. It provides endpoints for AI parsing, data extraction, and handles direct communication with the Gemini API using strict Pydantic schema validation.
 - **PostgreSQL**: Stores the structured master resume data, job posts, fit scores, applications, and resume versions.
 - **Redis**: Handles Laravel's cache and queue workers.

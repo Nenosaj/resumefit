@@ -106,16 +106,16 @@ resumefit/
 
 ## Phase 4 — FastAPI AI Service Setup
 
-- [ ] Create `laravel-backend/ai-service/`.
-- [ ] Add FastAPI `Dockerfile`.
-- [ ] Add `requirements.txt`.
-- [ ] Add `app/main.py`.
-- [ ] Add `GET /` health endpoint.
-- [ ] Add Pydantic request/response schemas.
-- [ ] Read `GEMINI_API_KEY` from environment.
-- [ ] Read `GEMINI_MODEL` from environment.
-- [ ] Confirm FastAPI is reachable at `http://localhost:8000`.
-- [ ] Update `docs/ARCHITECTURE.md` with FastAPI AI service responsibilities.
+- [x] Create `laravel-backend/ai-service/`.
+- [x] Add FastAPI `Dockerfile`.
+- [x] Add `requirements.txt`.
+- [x] Add `app/main.py`.
+- [x] Add `GET /` health endpoint.
+- [x] Add Pydantic request/response schemas.
+- [x] Read `GEMINI_API_KEY` from environment.
+- [x] Read `GEMINI_MODEL` from environment.
+- [x] Confirm FastAPI is reachable at `http://localhost:8000`.
+- [x] Update `docs/ARCHITECTURE.md` with FastAPI AI service responsibilities.
 
 ## Phase 5 — Gemini Job Analyzer Agent
 

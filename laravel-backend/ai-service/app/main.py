@@ -1,7 +1,12 @@
 from fastapi import FastAPI
+from app.schemas.health import HealthResponse
+from app.core.config import settings
 
-app = FastAPI(title="ResumeFit AI Service", version="0.1.0")
+app = FastAPI(title="ResumeFit AI Service")
 
-@app.get("/")
+@app.get("/", response_model=HealthResponse)
 async def health_check():
-    return {"service": "ResumeFit AI Service", "status": "ok", "version": app.version}
+    return HealthResponse(
+        service="ResumeFit AI Service",
+        status="running"
+    )
