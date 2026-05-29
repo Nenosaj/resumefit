@@ -71,20 +71,26 @@ resumefit/
 
 ## Phase 2 — Backend Docker Foundation
 
-- [ ] Create `laravel-backend/docker-compose.yml`.
-- [ ] Add PostgreSQL service.
-- [ ] Add Redis service.
-- [ ] Add Laravel PHP service.
-- [ ] Add Nginx service or decide to use Laravel dev server for early MVP.
-- [ ] Add FastAPI AI service.
-- [ ] Add shared Docker network.
-- [ ] Add PostgreSQL volume.
-- [ ] Create `laravel-backend/.env.example`.
-- [ ] Ensure `.env` is ignored by git.
+- [x] Create `laravel-backend/docker-compose.yml`.
+- [x] Add PostgreSQL service.
+- [x] Add Redis service.
+- [x] Add Laravel PHP service.
+- [x] Add Nginx service or decide to use Laravel dev server for early MVP.
+- [x] Add FastAPI AI service.
+- [x] Add shared Docker network.
+- [x] Add PostgreSQL volume.
+- [x] Create `laravel-backend/.env.example`.
+- [x] Ensure `.env` is ignored by git.
+- [x] Create `laravel-backend/docker/php/Dockerfile`.
+- [x] Create `laravel-backend/docker/nginx/default.conf`.
+- [x] Create `laravel-backend/src/.gitkeep`.
+- [x] Create `laravel-backend/ai-service/Dockerfile`.
+- [x] Create `laravel-backend/ai-service/requirements.txt`.
+- [x] Create `laravel-backend/ai-service/app/main.py` with health endpoint.
 - [ ] Validate `docker compose config`.
 - [ ] Run `docker compose up -d --build`.
 - [ ] Validate all containers start.
-- [ ] Update `docs/ARCHITECTURE.md` and `docs/TECH_STACK.md` with backend Docker foundation details.
+- [x] Update `docs/ARCHITECTURE.md` and `docs/TECH_STACK.md` with backend Docker foundation details.
 
 ## Phase 3 — Laravel Backend Setup
 
