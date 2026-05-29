@@ -29,6 +29,7 @@ coverage/
 
 # Docker
 *.log
+docker-compose.override.yml
 
 # Python / FastAPI
 __pycache__/
