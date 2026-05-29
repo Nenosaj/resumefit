@@ -13,4 +13,6 @@ This document tracks the core technologies used in ResumeFit and the reasons the
 - **Deployment**: Docker Compose first
 - **Storage**: Local storage first
 
+The Laravel framework is configured as the central API backend, communicating with PostgreSQL, Redis, and the Python microservice.
+
 Docker Compose is used to define and run the multi-container Docker application for the backend, ensuring consistent development environments.

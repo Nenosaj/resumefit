@@ -87,22 +87,22 @@ resumefit/
 - [x] Create `laravel-backend/ai-service/Dockerfile`.
 - [x] Create `laravel-backend/ai-service/requirements.txt`.
 - [x] Create `laravel-backend/ai-service/app/main.py` with health endpoint.
-- [ ] Validate `docker compose config`.
-- [ ] Run `docker compose up -d --build`.
-- [ ] Validate all containers start.
+- [x] Validate `docker compose config`.
+- [x] Run `docker compose up -d --build`.
+- [x] Validate all containers start.
 - [x] Update `docs/ARCHITECTURE.md` and `docs/TECH_STACK.md` with backend Docker foundation details.
 
 ## Phase 3 — Laravel Backend Setup
 
-- [ ] Create Laravel app inside `laravel-backend/src/`.
-- [ ] Configure Laravel database connection for PostgreSQL container.
-- [ ] Configure Redis connection.
-- [ ] Generate Laravel app key.
-- [ ] Run default Laravel migrations.
-- [ ] Create `/api/health` endpoint.
-- [ ] Confirm `/api/health` works from host machine.
-- [ ] Add Laravel HTTP client config for FastAPI service URL.
-- [ ] Update `docs/FEATURES.md` with Laravel health endpoint and backend API foundation notes.
+- [x] Create Laravel app inside `laravel-backend/src/`.
+- [x] Configure Laravel database connection for PostgreSQL container.
+- [x] Configure Redis connection.
+- [x] Generate Laravel app key.
+- [x] Run default Laravel migrations.
+- [x] Create `/api/health` endpoint.
+- [x] Confirm `/api/health` works from host machine.
+- [x] Add Laravel HTTP client config for FastAPI service URL.
+- [x] Update `docs/FEATURES.md` with Laravel health endpoint and backend API foundation notes.
 
 ## Phase 4 — FastAPI AI Service Setup
 
