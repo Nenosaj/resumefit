@@ -1,0 +1,45 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Node / Nuxt
+node_modules/
+.nuxt/
+.output/
+dist/
+coverage/
+
+# Laravel
+/vendor/
+/laravel-backend/src/vendor/
+/laravel-backend/src/node_modules/
+/laravel-backend/src/storage/*.key
+/laravel-backend/src/storage/framework/cache/*
+/laravel-backend/src/storage/framework/sessions/*
+/laravel-backend/src/storage/framework/views/*
+/laravel-backend/src/storage/logs/*
+/laravel-backend/src/bootstrap/cache/*.php
+
+# Docker
+*.log
+
+# Python / FastAPI
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Database / generated files
+*.sqlite
+*.db
+*.sql
+generated/
+exports/
