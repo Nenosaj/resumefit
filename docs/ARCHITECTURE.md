@@ -17,3 +17,5 @@ Gemini API
 ```
 
 **Supporting Services**: Redis for caching/queues, and local storage for MVP files.
+
+The backend services (Laravel API, PostgreSQL, FastAPI AI Service, Redis) are orchestrated using Docker Compose within the `laravel-backend/` directory.

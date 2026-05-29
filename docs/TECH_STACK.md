@@ -12,3 +12,5 @@ This document tracks the core technologies used in ResumeFit and the reasons the
 - **Queue/Cache**: Redis
 - **Deployment**: Docker Compose first
 - **Storage**: Local storage first
+
+Docker Compose is used to define and run the multi-container Docker application for the backend, ensuring consistent development environments.
