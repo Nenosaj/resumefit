@@ -117,6 +117,15 @@ resumefit/
 - [x] Confirm FastAPI is reachable at `http://localhost:8000`.
 - [x] Update `docs/ARCHITECTURE.md` with FastAPI AI service responsibilities.
 
+## Phase 4.5 — CI/CD Foundation
+
+- [x] Create GitHub Actions CI workflow for backend validation.
+- [x] Run Docker Compose build and start in CI.
+- [x] Test FastAPI health endpoint in CI.
+- [x] Test Laravel health endpoint in CI.
+- [x] Update documentation with CI details.
+- [ ] Add deployment target and Continuous Deployment (CD) strategy later.
+
 ## Phase 5 — Gemini Job Analyzer Agent
 
 - [ ] Create `JobAnalyzerAgent` class.

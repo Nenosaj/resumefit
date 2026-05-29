@@ -88,6 +88,18 @@ Use a spec-driven workflow:
 
 Do not jump into large implementation work without checking the current task.
 
+## Shell Command Policy
+
+The agent must not run shell commands directly.
+
+When validation is needed, the agent should:
+1. Finish the file changes.
+2. Provide exact commands for the user to run manually.
+3. Explain the expected output.
+4. Ask the user to paste any errors or logs if validation fails.
+
+This applies to Docker, Git, Composer, npm, Laravel Artisan, database migrations, tests, curl, and all other terminal commands.
+
 ## Dynamic Documentation Rules
 
 Keep the docs alive. Documentation is part of the definition of done, not an optional cleanup step.
@@ -181,6 +193,14 @@ Ask the user before doing any of these:
 - Never edit `vendor/`, `node_modules/`, generated lockfiles, or Docker volumes unless required by the task.
 - Never remove tests to make a build pass.
 - Never ignore failed tests or failed Docker commands.
+- Never run shell commands automatically.
+- Never ask the user for shell access or permission to run shell commands.
+- Never execute Docker, Git, Composer, npm, php artisan, migration, test, or curl commands yourself.
+- Always provide the exact commands the user should run manually.
+- After making file changes, clearly separate:
+  1. Files changed
+  2. Commands the user should run manually
+  3. Expected validation result
 
 ## Code Style Preferences
 

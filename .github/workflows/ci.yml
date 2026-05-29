@@ -1,0 +1,85 @@
+name: ResumeFit CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# Note: CD (Continuous Deployment) will be added later once a deployment target is chosen.
+# For now, this workflow is strictly for CI validation.
+
+jobs:
+  backend:
+    name: Backend Docker Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare backend environment
+        working-directory: laravel-backend
+        run: |
+          if [ ! -f .env ]; then
+            cp .env.example .env
+          fi
+
+          if [ ! -f src/.env ]; then
+            cp src/.env.example src/.env
+          fi
+
+          sed -i 's/^DB_CONNECTION=.*/DB_CONNECTION=pgsql/' src/.env || true
+          sed -i 's/^DB_HOST=.*/DB_HOST=postgres/' src/.env || true
+          sed -i 's/^DB_PORT=.*/DB_PORT=5432/' src/.env || true
+          sed -i 's/^DB_DATABASE=.*/DB_DATABASE=resumefit/' src/.env || true
+          sed -i 's/^DB_USERNAME=.*/DB_USERNAME=resumefit_user/' src/.env || true
+          sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=resumefit_password/' src/.env || true
+
+          if ! grep -q '^FASTAPI_BASE_URL=' src/.env; then
+            echo "FASTAPI_BASE_URL=http://ai-service:8000" >> src/.env
+          fi
+
+      - name: Validate Docker Compose config
+        working-directory: laravel-backend
+        run: docker compose config
+
+      - name: Build and start backend services
+        working-directory: laravel-backend
+        run: docker compose up -d --build
+
+      - name: Wait for services
+        run: sleep 20
+
+      - name: Show running services
+        working-directory: laravel-backend
+        run: docker compose ps
+
+      - name: Install Composer Dependencies
+        working-directory: laravel-backend
+        run: docker compose exec -T laravel composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Generate Laravel app key
+        working-directory: laravel-backend
+        run: docker compose exec -T laravel php artisan key:generate
+
+      - name: Run Laravel migrations
+        working-directory: laravel-backend
+        run: docker compose exec -T laravel php artisan migrate --force
+
+      - name: List Laravel routes
+        working-directory: laravel-backend
+        run: docker compose exec -T laravel php artisan route:list
+
+      - name: Test FastAPI health endpoint
+        run: curl --fail http://localhost:8000/
+
+      - name: Test Laravel health endpoint
+        run: curl --fail http://localhost:8080/api/health
+
+      - name: Stop services
+        if: always()
+        working-directory: laravel-backend
+        run: docker compose down --remove-orphans

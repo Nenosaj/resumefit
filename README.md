@@ -21,3 +21,13 @@ resumefit/
 │   └── DECISIONS.md
 ├── nuxt-frontend/
 └── laravel-backend/
+```
+
+## Continuous Integration
+
+ResumeFit uses GitHub Actions for Continuous Integration (CI). Pushes and pull requests to the `main` branch trigger a backend validation workflow that:
+- Builds the Docker Compose stack
+- Runs Laravel migrations
+- Verifies system health endpoints
+
+*(A CI status badge will be added here once the repository is pushed to a remote host).*

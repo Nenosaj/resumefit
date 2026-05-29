@@ -8,8 +8,6 @@ WORKDIR /var/www/html
 RUN apk add --no-cache \
     git \
     curl \
-    libpq-dev \
-    nginx \
     # For pdo_pgsql
     postgresql-dev
 

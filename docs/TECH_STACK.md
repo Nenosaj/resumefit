@@ -10,6 +10,7 @@ This document tracks the core technologies used in ResumeFit and the reasons the
 - **LLM Provider**: Gemini API
 - **Database**: PostgreSQL
 - **Queue/Cache**: Redis
+- **CI/CD**: GitHub Actions (CI only for now)
 - **Deployment**: Docker Compose first
 - **Storage**: Local storage first
 

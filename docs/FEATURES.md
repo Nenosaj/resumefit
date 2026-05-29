@@ -38,4 +38,15 @@ Related Endpoints: `GET /`
 Files/Modules: `ai-service/app/main.py`, `ai-service/app/schemas/health.py`
 How to Test: Run `curl http://localhost:8000/` and verify the `{"service": "ResumeFit AI Service", "status": "running"}` response.
 
+## CI Validation Checks
+
+Status: Complete
+Purpose: Automatically validates that the backend environment builds and health checks pass on new pull requests and pushes to `main`.
+User Flow: N/A (Developer level)
+Technical Flow: GitHub Actions checks out the code, prepares mock `.env` files, builds the Docker Compose stack, runs migrations, and curls health endpoints.
+Related Endpoints: `GET /` (FastAPI), `GET /api/health` (Laravel)
+Files/Modules: `.github/workflows/ci.yml`
+How to Test: Push a commit to the `main` branch or create a pull request to `main` and observe the GitHub Actions tab.
+Notes / Limitations: This is strictly for Continuous Integration. Continuous Deployment (CD) and real secrets handling are postponed until a deployment environment is established.
+
 ```
