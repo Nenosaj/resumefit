@@ -83,10 +83,11 @@ Use a spec-driven workflow:
 1. **Specify** — clarify or update `SPEC.md`.
 2. **Plan** — identify the smallest useful task from `TASKS.md`.
 3. **Implement** — make focused code changes only for that task.
-4. **Validate** — run relevant tests or commands.
+4. **Validate** — provide exact manual validation commands for the user to run.
 5. **Update** — mark progress in `TASKS.md` and update `SPEC.md` if the design changed.
 
 Do not jump into large implementation work without checking the current task.
+The agent must not run validation commands directly. The user runs validation manually and pastes any errors or logs back into the conversation.
 
 ## Shell Command Policy
 
@@ -99,6 +100,28 @@ When validation is needed, the agent should:
 4. Ask the user to paste any errors or logs if validation fails.
 
 This applies to Docker, Git, Composer, npm, Laravel Artisan, database migrations, tests, curl, and all other terminal commands.
+
+## Git and Branch Workflow
+
+- Never work directly on `main`.
+- Every task must start from a feature branch.
+- Use one branch per focused task or change.
+- Commits must be made on the feature branch.
+- Push the feature branch and open a pull request into `main`.
+- `main` can only be updated by merging a pull request after ResumeFit CI passes.
+- If CI fails, fix the feature branch and push again.
+- Do not merge until CI is green.
+- Do not force push to `main`.
+- Do not delete `main`.
+
+Suggested branch names:
+
+```text
+feature/gemini-job-analyzer
+feature/laravel-fastapi-integration
+fix/docker-health-check
+docs/update-agent-rules
+ci/backend-validation
 
 ## Dynamic Documentation Rules
 
@@ -164,6 +187,11 @@ Documentation quality rules:
 - Keep the first build focused on manual job description analysis.
 - Update `TASKS.md` when work is completed.
 - Update feature, architecture, tech stack, or decision docs when the task changes them.
+- Start each task from a feature branch.
+- Keep commits small and related to the active task.
+- Require ResumeFit CI to pass before merging into `main`.
+- Tell the user the suggested branch name for each task.
+- Provide manual git commands instead of running them.
 
 ### ⚠️ Ask First
 
@@ -201,6 +229,12 @@ Ask the user before doing any of these:
   1. Files changed
   2. Commands the user should run manually
   3. Expected validation result
+- Never push directly to `main`.
+- Never commit directly to `main`.
+- Never suggest bypassing CI.
+- Never merge a pull request if ResumeFit CI fails.
+- Never force push to `main`.
+- Never delete the `main` branch.
 
 ## Code Style Preferences
 
@@ -235,8 +269,8 @@ Ask the user before doing any of these:
 - Keep pages thin and components reusable.
 - Use Tailwind CSS for styling.
 
-## Commands
-
+## Manual Commands Reference
+These commands are for the user to run manually. The agent must not execute them directly.
 Expected commands may evolve. Keep this section updated when implementation changes.
 
 From project root:
@@ -256,9 +290,9 @@ docker compose logs -f
 Laravel commands, service name may be adjusted after compose is created:
 
 ```bash
-docker compose exec app php artisan migrate
-docker compose exec app php artisan test
-docker compose exec app php artisan route:list
+docker compose exec laravel php artisan migrate
+docker compose exec laravel php artisan test
+docker compose exec laravel php artisan route:list
 ```
 
 FastAPI commands, service name may be adjusted after compose is created:
@@ -284,8 +318,10 @@ When completing a task, summarize:
 1. What changed
 2. Files changed
 3. Documentation updated
-4. Commands run
-5. Test/build result
-6. Next recommended task
+4. Suggested branch name
+5. Manual commands the user should run
+6. Expected validation result
+7. CI expectation
+8. Next recommended task
 
-If a command fails, show the failure and propose the smallest fix.
+If validation fails, ask the user to paste the error or logs and propose the smallest fix.
